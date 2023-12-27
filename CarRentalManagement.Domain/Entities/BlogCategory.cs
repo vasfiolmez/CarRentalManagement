@@ -8,7 +8,7 @@ namespace CarRentalManagement.Domain.Entities
 {
     public class BlogCategory
     {
-        public int CategoryID { get; set; }
+        public int BlogCategoryID { get; set; }
         public string Name { get; set; }
     }
 }

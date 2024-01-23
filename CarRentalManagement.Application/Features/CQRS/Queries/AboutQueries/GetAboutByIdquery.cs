@@ -12,7 +12,6 @@ namespace CarRentalManagement.Application.Features.CQRS.Queries.AboutQueries
         {
             Id = id;
         }
-
         public int Id { get; set; }
     }
 }

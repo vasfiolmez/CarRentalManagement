@@ -18,11 +18,10 @@ namespace CarRentalManagement.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<T> CreateAsync(T entity)
+        public async Task CreateAsync(T entity)
         {
-            await _context.Set<T>().AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+           _context.Set<T>().Add(entity);
+           await _context.SaveChangesAsync();
         }
 
         public async Task<List<T>> GetAllAsync()
@@ -35,18 +34,16 @@ namespace CarRentalManagement.Persistence.Repositories
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<T> RemoveAsync(T entity)
+        public async Task RemoveAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
-            return entity;
         }
 
-        public async Task<T> UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            _context.Set<T>().Update(entity);
+           _context.Set<T>().Update(entity);
             await _context.SaveChangesAsync();
-            return entity;
         }
     }
 }

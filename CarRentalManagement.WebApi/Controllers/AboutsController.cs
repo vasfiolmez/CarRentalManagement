@@ -1,5 +1,4 @@
-﻿using CarRentalManagement.Application.Features.CQRS.AboutCommands;
-using CarRentalManagement.Application.Features.CQRS.Commands;
+﻿using CarRentalManagement.Application.Features.CQRS.Commands.AboutCommands;
 using CarRentalManagement.Application.Features.CQRS.Handlers.AboutHandlers;
 using CarRentalManagement.Application.Features.CQRS.Queries.AboutQueries;
 using Microsoft.AspNetCore.Http;

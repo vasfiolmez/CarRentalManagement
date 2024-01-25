@@ -1,4 +1,4 @@
-﻿using CarRentalManagement.Application.Features.CQRS.AboutCommands;
+﻿using CarRentalManagement.Application.Features.CQRS.Commands.AboutCommands;
 using CarRentalManagement.Application.Interfaces;
 using CarRentalManagement.Domain.Entities;
 using System;

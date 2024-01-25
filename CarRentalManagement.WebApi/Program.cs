@@ -1,4 +1,8 @@
 using CarRentalManagement.Application.Features.CQRS.Handlers.AboutHandlers;
+using CarRentalManagement.Application.Features.CQRS.Handlers.BannerHandlers;
+using CarRentalManagement.Application.Features.CQRS.Handlers.BrandHandlers;
+using CarRentalManagement.Application.Features.CQRS.Handlers.CarHandlers;
+using CarRentalManagement.Application.Features.CQRS.Queries.BannerQueries;
 using CarRentalManagement.Application.Interfaces;
 using CarRentalManagement.Persistence.Context;
 using CarRentalManagement.Persistence.Repositories;
@@ -14,6 +18,24 @@ builder.Services.AddScoped<GetAboutByIdQueryHandler>();
 builder.Services.AddScoped<CreateAboutCommandHandler>();
 builder.Services.AddScoped<UpdateAboutCommandHandler>();
 builder.Services.AddScoped<RemoveAboutCommandHandler>();
+
+builder.Services.AddScoped<GetBannerQueryHandler>();
+builder.Services.AddScoped<GetBannerByIdQueryHandler>();
+builder.Services.AddScoped<CreateBannerCommandHandler>();
+builder.Services.AddScoped<UpdateBannerCommandHandler>();
+builder.Services.AddScoped<RemoveBannerCommandHandler>();
+
+builder.Services.AddScoped<GetBrandQueryHandler>();
+builder.Services.AddScoped<GetBrandByIdQueryHandler>();
+builder.Services.AddScoped<CreateBrandCommandHandler>();
+builder.Services.AddScoped<UpdateBrandCommandHandler>();
+builder.Services.AddScoped<RemoveBrandCommandHandler>();
+
+builder.Services.AddScoped<GetCarQueryHandler>();
+builder.Services.AddScoped<GetCarByIdQueryHandler>();
+builder.Services.AddScoped<CreateCarCommandHandler>();
+builder.Services.AddScoped<UpdateCarCommandHandler>();
+builder.Services.AddScoped<RemoveCarCommandHandler>();
 
 
 builder.Services.AddControllers();

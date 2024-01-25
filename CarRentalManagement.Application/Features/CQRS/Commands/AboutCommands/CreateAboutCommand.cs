@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarRentalManagement.Application.Features.CQRS.Commands
+namespace CarRentalManagement.Application.Features.CQRS.Commands.AboutCommands
 {
     public class CreateAboutCommand
     {

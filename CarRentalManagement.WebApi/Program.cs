@@ -4,14 +4,17 @@ using CarRentalManagement.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.CarHandlers;
 using CarRentalManagement.Application.Features.CQRS.Queries.BannerQueries;
 using CarRentalManagement.Application.Interfaces;
+using CarRentalManagement.Application.Interfaces.CarInterfaces;
 using CarRentalManagement.Persistence.Context;
 using CarRentalManagement.Persistence.Repositories;
+using CarRentalManagement.Persistence.Repositories.CarRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<CarRentalContext>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
+builder.Services.AddScoped(typeof(ICarRepository),typeof(CarRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();
@@ -36,6 +39,7 @@ builder.Services.AddScoped<GetCarByIdQueryHandler>();
 builder.Services.AddScoped<CreateCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
+builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
 
 
 builder.Services.AddControllers();

@@ -1,7 +1,9 @@
 using CarRentalManagement.Application.Features.CQRS.Handlers.AboutHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.BannerHandlers;
+using CarRentalManagement.Application.Features.CQRS.Handlers.BlogCategoryHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.CarHandlers;
+using CarRentalManagement.Application.Features.CQRS.Handlers.ContactHandlers;
 using CarRentalManagement.Application.Features.CQRS.Queries.BannerQueries;
 using CarRentalManagement.Application.Interfaces;
 using CarRentalManagement.Application.Interfaces.CarInterfaces;
@@ -40,6 +42,18 @@ builder.Services.AddScoped<CreateCarCommandHandler>();
 builder.Services.AddScoped<UpdateCarCommandHandler>();
 builder.Services.AddScoped<RemoveCarCommandHandler>();
 builder.Services.AddScoped<GetCarWithBrandQueryHandler>();
+
+builder.Services.AddScoped<GetCategoryQueryHandler>();
+builder.Services.AddScoped<GetCategoryByIdQueryHandler>();
+builder.Services.AddScoped<CreateCategoryCommandHandler>();
+builder.Services.AddScoped<UpdateCategoryCommandHandler>();
+builder.Services.AddScoped<RemoveCategoryCommandHandler>();
+
+builder.Services.AddScoped<GetContactQueryHandler>();
+builder.Services.AddScoped<GetContactByIdQueryHandler>();
+builder.Services.AddScoped<CreateContactCommandHandler>();
+builder.Services.AddScoped<UpdateContactCommandHandler>();
+builder.Services.AddScoped<RemoveContactCommandHandler>();
 
 
 builder.Services.AddControllers();

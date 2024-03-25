@@ -7,6 +7,7 @@ using CarRentalManagement.Application.Features.CQRS.Handlers.ContactHandlers;
 using CarRentalManagement.Application.Features.CQRS.Queries.BannerQueries;
 using CarRentalManagement.Application.Interfaces;
 using CarRentalManagement.Application.Interfaces.CarInterfaces;
+using CarRentalManagement.Application.Services;
 using CarRentalManagement.Persistence.Context;
 using CarRentalManagement.Persistence.Repositories;
 using CarRentalManagement.Persistence.Repositories.CarRepositories;
@@ -54,6 +55,8 @@ builder.Services.AddScoped<GetContactByIdQueryHandler>();
 builder.Services.AddScoped<CreateContactCommandHandler>();
 builder.Services.AddScoped<UpdateContactCommandHandler>();
 builder.Services.AddScoped<RemoveContactCommandHandler>();
+
+builder.Services.AddApplicationService(builder.Configuration);
 
 
 builder.Services.AddControllers();

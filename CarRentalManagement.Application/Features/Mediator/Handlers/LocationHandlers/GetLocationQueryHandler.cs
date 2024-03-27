@@ -1,5 +1,4 @@
 ﻿using CarRentalManagement.Application.Features.Mediator.Queries.LocationQueries;
-using CarRentalManagement.Application.Features.Mediator.Results.FooterAdressResult;
 using CarRentalManagement.Application.Features.Mediator.Results.LocationResults;
 using CarRentalManagement.Application.Interfaces;
 using CarRentalManagement.Domain.Entities;

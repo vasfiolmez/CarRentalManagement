@@ -35,7 +35,7 @@ namespace CarRentalManagement.WebApi.Controllers
             return Ok("Sosyal Media bilgisi başarıyla eklendi.");
         }
         [HttpDelete]
-        public async Task<IActionResult> RemoveLoation(int id)
+        public async Task<IActionResult> RemoveSocialMedia(int id)
         {
             await _mediator.Send(new RemoveSocialMediaCommand(id));
             return Ok("Sosyal Medya bilgisi Başarıyla silindi.");

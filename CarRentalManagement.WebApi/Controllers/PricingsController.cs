@@ -35,7 +35,7 @@ namespace CarRentalManagement.WebApi.Controllers
             return Ok("Ödeme Türü başarıyla eklendi.");
         }
         [HttpDelete]
-        public async Task<IActionResult> RemoveLoation(int id)
+        public async Task<IActionResult> RemovePricing(int id)
         {
             await _mediator.Send(new RemovePricingCommand(id));
             return Ok("Ödeme Türü Başarıyla silindi.");

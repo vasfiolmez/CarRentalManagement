@@ -35,7 +35,7 @@ namespace CarRentalManagement.WebApi.Controllers
             return Ok("Servis başarıyla eklendi.");
         }
         [HttpDelete]
-        public async Task<IActionResult> RemoveLoation(int id)
+        public async Task<IActionResult> RemoveService(int id)
         {
             await _mediator.Send(new RemoveServiceCommand(id));
             return Ok("Servis Başarıyla silindi.");

@@ -35,7 +35,7 @@ namespace CarRentalManagement.WebApi.Controllers
             return Ok("lokasyon başarıyla eklendi.");
         }
         [HttpDelete]
-        public async Task<IActionResult> RemoveLoation(int id)
+        public async Task<IActionResult> RemoveLocation(int id)
         {
             await _mediator.Send(new RemoveLocationCommand(id));
             return Ok("Lokasyon Başarıyla silindi.");

@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalManagement.Applica
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{44764073-45F4-4008-AF28-F5BC2983AA6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentaManagement.WebUI", "CarRentaManagement.WebUI\CarRentaManagement.WebUI.csproj", "{1AC93D88-4566-4C97-8CFE-3E13B58FB335}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentaManagement.WebUI", "CarRentaManagement.WebUI\CarRentaManagement.WebUI.csproj", "{1AC93D88-4566-4C97-8CFE-3E13B58FB335}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalManagement.Dto", "CarRentalManagement.Dto\CarRentalManagement.Dto.csproj", "{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{1AC93D88-4566-4C97-8CFE-3E13B58FB335}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AC93D88-4566-4C97-8CFE-3E13B58FB335}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AC93D88-4566-4C97-8CFE-3E13B58FB335}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{CB2E33BE-46B7-40B6-BCC6-466C0A47E092} = {30A45CB7-D10F-4C9D-8D7D-114DE86C43F7}
 		{FF17C207-8B68-4C1C-B066-6A11F27EFB22} = {041F2743-B37C-4295-B644-80A27EB2D01F}
 		{1AC93D88-4566-4C97-8CFE-3E13B58FB335} = {44764073-45F4-4008-AF28-F5BC2983AA6E}
+		{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B} = {44764073-45F4-4008-AF28-F5BC2983AA6E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {68D83933-28DB-4C97-80E7-5DA43107BBE7}

@@ -23,7 +23,6 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.AuthorHandl
         {
             await _repository.CreateAsync(new Author
             {
-                AuthorId = request.AuthorId,
                 Name = request.Name,
                 Description = request.Description,
                 ImageUrl = request.ImageUrl

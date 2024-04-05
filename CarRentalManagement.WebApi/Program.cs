@@ -4,14 +4,15 @@ using CarRentalManagement.Application.Features.CQRS.Handlers.BlogCategoryHandler
 using CarRentalManagement.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.CarHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.ContactHandlers;
-using CarRentalManagement.Application.Features.CQRS.Queries.BannerQueries;
 using CarRentalManagement.Application.Interfaces;
 using CarRentalManagement.Application.Interfaces.BlogInterfaces;
 using CarRentalManagement.Application.Interfaces.CarInterfaces;
+using CarRentalManagement.Application.Interfaces.CarPricingInterfaces;
 using CarRentalManagement.Application.Services;
 using CarRentalManagement.Persistence.Context;
 using CarRentalManagement.Persistence.Repositories;
 using CarRentalManagement.Persistence.Repositories.BlogRepositories;
+using CarRentalManagement.Persistence.Repositories.CarPricingRepositories;
 using CarRentalManagement.Persistence.Repositories.CarRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddScoped<CarRentalContext>();
 builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository),typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository),typeof(BlogRepository));
+builder.Services.AddScoped(typeof(ICarPricingRepository),typeof(CarPricingRepository));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();

@@ -17,5 +17,6 @@ namespace CarRentalManagement.Domain.Entities
         public int BlogCategoryID { get; set; }
         public BlogCategory BlogCategory { get; set; }
         public string Description { get; set; }
+        public List<TagCloud> TagClouds { get; set; }
     }
 }

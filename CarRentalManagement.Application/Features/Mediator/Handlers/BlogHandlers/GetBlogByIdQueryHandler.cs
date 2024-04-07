@@ -27,6 +27,7 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.BlogHandler
             {
                 AuthorId = values.AuthorId,
                 BlogId = values.BlogId,
+                Description=values.Description,
                 BlogCategoryID=values.BlogCategoryID,
                 CoverImageUrl = values.CoverImageUrl,
                 Title = values.Title,

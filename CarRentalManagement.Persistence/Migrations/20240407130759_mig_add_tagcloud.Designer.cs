@@ -4,6 +4,7 @@ using CarRentalManagement.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarRentalManagement.Persistence.Migrations
 {
     [DbContext(typeof(CarRentalContext))]
-    partial class CarRentalContextModelSnapshot : ModelSnapshot
+    [Migration("20240407130759_mig_add_tagcloud")]
+    partial class mig_add_tagcloud
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace CarRentalManagement.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("BlogTagCloud", b =>
-                {
-                    b.Property<int>("BlogsBlogId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TagCloudsTagCloudID")
-                        .HasColumnType("int");
-
-                    b.HasKey("BlogsBlogId", "TagCloudsTagCloudID");
-
-                    b.HasIndex("TagCloudsTagCloudID");
-
-                    b.ToTable("BlogTagCloud");
-                });
 
             modelBuilder.Entity("CarRentalManagement.Domain.Entities.About", b =>
                 {
@@ -488,6 +476,8 @@ namespace CarRentalManagement.Persistence.Migrations
 
                     b.HasKey("TagCloudID");
 
+                    b.HasIndex("BlogID");
+
                     b.ToTable("TagClouds");
                 });
 
@@ -518,21 +508,6 @@ namespace CarRentalManagement.Persistence.Migrations
                     b.HasKey("TestimonialID");
 
                     b.ToTable("Testimonials");
-                });
-
-            modelBuilder.Entity("BlogTagCloud", b =>
-                {
-                    b.HasOne("CarRentalManagement.Domain.Entities.Blog", null)
-                        .WithMany()
-                        .HasForeignKey("BlogsBlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CarRentalManagement.Domain.Entities.TagCloud", null)
-                        .WithMany()
-                        .HasForeignKey("TagCloudsTagCloudID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("CarRentalManagement.Domain.Entities.Blog", b =>
@@ -614,9 +589,25 @@ namespace CarRentalManagement.Persistence.Migrations
                     b.Navigation("Pricing");
                 });
 
+            modelBuilder.Entity("CarRentalManagement.Domain.Entities.TagCloud", b =>
+                {
+                    b.HasOne("CarRentalManagement.Domain.Entities.Blog", "Blog")
+                        .WithMany("TagClouds")
+                        .HasForeignKey("BlogID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("CarRentalManagement.Domain.Entities.Author", b =>
                 {
                     b.Navigation("Blogs");
+                });
+
+            modelBuilder.Entity("CarRentalManagement.Domain.Entities.Blog", b =>
+                {
+                    b.Navigation("TagClouds");
                 });
 
             modelBuilder.Entity("CarRentalManagement.Domain.Entities.BlogCategory", b =>

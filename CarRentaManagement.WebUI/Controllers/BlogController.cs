@@ -31,6 +31,7 @@ namespace CarRentaManagement.WebUI.Controllers
         {
             ViewBag.v1 = "Bloglar";
             ViewBag.v2 = "Blog Detayı ve yorumlar";
+            ViewBag.blogİd = id;
 
             return View();
         }

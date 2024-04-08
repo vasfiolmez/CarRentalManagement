@@ -4,9 +4,9 @@
 
     <p>@Model.Description</p>
 
-    @await Component.InvokeAsync("_BlogDetailTagCloudByBlogComponentPartial")
+    @await Component.InvokeAsync("_BlogDetailTagCloudByBlogComponentPartial", new { id = ViewBag.blogİd })
 
-    @await Component.InvokeAsync("_BlogDetailAuthorAboutComponenPartial")
+    @await Component.InvokeAsync("_BlogDetailAuthorAboutComponenPartial", new { id = ViewBag.blogİd })
 
     <div class="pt-5 mt-5">
         <h3 class="mb-5">6 Yorum</h3>

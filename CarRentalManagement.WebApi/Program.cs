@@ -4,16 +4,20 @@ using CarRentalManagement.Application.Features.CQRS.Handlers.BlogCategoryHandler
 using CarRentalManagement.Application.Features.CQRS.Handlers.BrandHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.CarHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.ContactHandlers;
+using CarRentalManagement.Application.Features.RepositoryPattern;
 using CarRentalManagement.Application.Interfaces;
 using CarRentalManagement.Application.Interfaces.BlogInterfaces;
 using CarRentalManagement.Application.Interfaces.CarInterfaces;
 using CarRentalManagement.Application.Interfaces.CarPricingInterfaces;
+using CarRentalManagement.Application.Interfaces.TagCloudInterfaces;
 using CarRentalManagement.Application.Services;
 using CarRentalManagement.Persistence.Context;
 using CarRentalManagement.Persistence.Repositories;
 using CarRentalManagement.Persistence.Repositories.BlogRepositories;
 using CarRentalManagement.Persistence.Repositories.CarPricingRepositories;
 using CarRentalManagement.Persistence.Repositories.CarRepositories;
+using CarRentalManagement.Persistence.Repositories.CommentRepositories;
+using CarRentalManagement.Persistence.Repositories.TagCloudRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +27,8 @@ builder.Services.AddScoped(typeof(IRepository<>),typeof(Repository<>));
 builder.Services.AddScoped(typeof(ICarRepository),typeof(CarRepository));
 builder.Services.AddScoped(typeof(IBlogRepository),typeof(BlogRepository));
 builder.Services.AddScoped(typeof(ICarPricingRepository),typeof(CarPricingRepository));
+builder.Services.AddScoped(typeof(ITagCloudRepository),typeof(TagCloudRepository));
+builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(CommentRepository<>));
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
 builder.Services.AddScoped<GetAboutByIdQueryHandler>();

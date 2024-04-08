@@ -25,6 +25,8 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.BlogHandler
             return values.Select(x=>new GetAllBlogsWithAuthorQueryResult
             {
                 AuthorId = x.AuthorId,
+                AuthorDescription=x.Author.Description,
+                AuthorImageUrl=x.Author.ImageUrl,
                 AuthorName = x.Author.Name,
                 BlogCategoryID = x.BlogCategoryID,
                 BlogId = x.BlogId,

@@ -13,6 +13,8 @@ namespace CarRentalManagement.Dto.BlogDtos
         public string authorName { get; set; }
         public object categoryName { get; set; }
         public int authorId { get; set; }
+        public string AuthorDescription { get; set; }
+        public string AuthorImageUrl { get; set; }
         public string coverImageUrl { get; set; }
         public string Description { get; set; }
         public DateTime createdDate { get; set; }

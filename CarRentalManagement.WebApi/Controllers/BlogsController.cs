@@ -59,5 +59,12 @@ namespace CarRentalManagement.WebApi.Controllers
             return Ok(values);
         }
 
+        [HttpGet("GetAuthorByBlogId")]
+        public async Task<IActionResult> GetAuthorByBlogId(int id)
+        {
+            var values = await _mediator.Send(new GetAuthorByBlogIdQuery(id));
+            return Ok(values);
+        }
+
     }
 }

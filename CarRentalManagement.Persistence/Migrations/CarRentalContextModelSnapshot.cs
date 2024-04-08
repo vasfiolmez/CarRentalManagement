@@ -309,6 +309,35 @@ namespace CarRentalManagement.Persistence.Migrations
                     b.ToTable("CarPricings");
                 });
 
+            modelBuilder.Entity("CarRentalManagement.Domain.Entities.Comment", b =>
+                {
+                    b.Property<int>("CommentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CommentId"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CommentId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("CarRentalManagement.Domain.Entities.Contact", b =>
                 {
                     b.Property<int>("ContactID")
@@ -614,9 +643,25 @@ namespace CarRentalManagement.Persistence.Migrations
                     b.Navigation("Pricing");
                 });
 
+            modelBuilder.Entity("CarRentalManagement.Domain.Entities.Comment", b =>
+                {
+                    b.HasOne("CarRentalManagement.Domain.Entities.Blog", "Blog")
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("CarRentalManagement.Domain.Entities.Author", b =>
                 {
                     b.Navigation("Blogs");
+                });
+
+            modelBuilder.Entity("CarRentalManagement.Domain.Entities.Blog", b =>
+                {
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("CarRentalManagement.Domain.Entities.BlogCategory", b =>

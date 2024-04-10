@@ -48,6 +48,11 @@ namespace CarRentalManagement.Persistence.Repositories.CommentRepositories
             return _context.Comments.Find(id);
         }
 
+        public List<Comment> GetCommentByBlogId(int id)
+        {
+            return _context.Set<Comment>().Where(x=>x.BlogId==id).ToList();
+        }
+
         public void Update(Comment entity)
         {
             _context.Comments.Remove(entity);

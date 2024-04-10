@@ -46,6 +46,13 @@ namespace CarRentalManagement.WebApi.Controllers
            var value= _repository.GetById(id);
             return Ok(value);
         }
+        [HttpGet("GetCommentByBlogId")]
+        public IActionResult GetCommentByBlogId(int id)
+        {
+            var value = _repository.GetCommentByBlogId(id);
+            return Ok(value);
+        }
+        
 
     }
 }

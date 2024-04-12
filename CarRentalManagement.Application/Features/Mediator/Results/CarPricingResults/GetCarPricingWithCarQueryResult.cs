@@ -8,6 +8,7 @@ namespace CarRentalManagement.Application.Features.Mediator.Results.CarPricingRe
 {
     public class GetCarPricingWithCarQueryResult
     {
+        public int CarID { get; set; }
         public int CarPricingId { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }

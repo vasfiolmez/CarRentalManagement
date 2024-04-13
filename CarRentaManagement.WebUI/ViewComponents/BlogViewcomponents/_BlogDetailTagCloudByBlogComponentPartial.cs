@@ -17,6 +17,7 @@ namespace CarRentaManagement.WebUI.ViewComponents.BlogViewcomponents
 
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
+            ViewBag.blogid = id;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:7056/api/TagClouds/GetTagCloudByBlogId?id=" + id);
             if (responseMessage.IsSuccessStatusCode)

@@ -12,5 +12,7 @@ namespace CarRentalManagement.Application.Features.Mediator.Results.CarPricingRe
         public decimal DailyAmount { get; set; }
         public decimal WeeklyAmount { get; set; }
         public decimal MonthlyAmount { get; set;}
+        public string CoverImageUrl { get; set; }
+        public string Brand { get; set; }
     }
 }

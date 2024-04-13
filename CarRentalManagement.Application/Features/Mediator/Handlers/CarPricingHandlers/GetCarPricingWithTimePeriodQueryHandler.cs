@@ -1,6 +1,5 @@
 ﻿using CarRentalManagement.Application.Features.Mediator.Queries.CarPricingQueries;
 using CarRentalManagement.Application.Features.Mediator.Results.CarPricingResults;
-using CarRentalManagement.Application.Interfaces.CarInterfaces;
 using CarRentalManagement.Application.Interfaces.CarPricingInterfaces;
 using MediatR;
 using System;
@@ -26,6 +25,8 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.CarPricingH
             return values.Select(x => new GetCarPricingWithTimePeriodQueryResult
             {
                 Model = x.Model,
+                Brand = x.Brand,
+                CoverImageUrl=x.CoverImageUrl,
               DailyAmount = x.Amounts[0],
                 WeeklyAmount = x.Amounts[1],
                 MonthlyAmount = x.Amounts[2]

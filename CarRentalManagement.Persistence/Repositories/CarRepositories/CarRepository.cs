@@ -19,6 +19,8 @@ namespace CarRentalManagement.Persistence.Repositories.CarRepositories
             _context = context;
         }
 
+       
+
         public List<Car> GetCarsListWithBrands()
         {
             var values=_context.Cars.Include(c => c.Brand).ToList();

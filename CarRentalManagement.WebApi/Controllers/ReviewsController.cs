@@ -15,6 +15,7 @@ namespace CarRentalManagement.WebApi.Controllers
         {
             _mediator = mediator;
         }
+        [HttpGet]
         public async Task<IActionResult> ReviewListByCarId(int id)
         {
             var values = await _mediator.Send(new GetReviewByCarIdQuery(id));

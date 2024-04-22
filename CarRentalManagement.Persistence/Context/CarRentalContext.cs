@@ -29,7 +29,9 @@ namespace CarRentalManagement.Persistence.Context
                 .OnDelete(DeleteBehavior.ClientSetNull);
         }
 
-        public DbSet<About> Abouts { get; set; }
+		public DbSet<AppUser> AppUsers { get; set; }
+		public DbSet<AppRole> AppRoles { get; set; }
+		public DbSet<About> Abouts { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<Brand> Brands { get; set; }
@@ -52,8 +54,7 @@ namespace CarRentalManagement.Persistence.Context
         public DbSet<RentACar> RentACars { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Review> Reviews { get; set; }
-
-      
+  
     }
 }
 

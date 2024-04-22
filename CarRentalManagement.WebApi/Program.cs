@@ -1,4 +1,4 @@
-using CarRentalManagement.Application.Features.CQRS.Handlers.AboutHandlers;
+ using CarRentalManagement.Application.Features.CQRS.Handlers.AboutHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.BannerHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.BlogCategoryHandlers;
 using CarRentalManagement.Application.Features.CQRS.Handlers.BrandHandlers;
@@ -15,6 +15,7 @@ using CarRentalManagement.Application.Interfaces.RentACarInterfaces;
 using CarRentalManagement.Application.Interfaces.ReviewInterfaces;
 using CarRentalManagement.Application.Interfaces.TagCloudInterfaces;
 using CarRentalManagement.Application.Services;
+using CarRentalManagement.Application.Tools;
 using CarRentalManagement.Persistence.Context;
 using CarRentalManagement.Persistence.Repositories;
 using CarRentalManagement.Persistence.Repositories.BlogRepositories;
@@ -26,8 +27,25 @@ using CarRentalManagement.Persistence.Repositories.CommentRepositories;
 using CarRentalManagement.Persistence.Repositories.RentACarRepository;
 using CarRentalManagement.Persistence.Repositories.ReviewRepositories;
 using CarRentalManagement.Persistence.Repositories.TagCloudRepositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+	opt.RequireHttpsMetadata = false;
+	opt.TokenValidationParameters = new TokenValidationParameters
+	{
+		ValidAudience = JwtTokenDefaults.ValidAudience,
+		ValidIssuer = JwtTokenDefaults.ValidIssuer,
+		ClockSkew = TimeSpan.Zero,
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
+		ValidateLifetime = true,
+		ValidateIssuerSigningKey = true
+	};
+});
 
 // Add services to the container.
 builder.Services.AddScoped<CarRentalContext>();
@@ -99,7 +117,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

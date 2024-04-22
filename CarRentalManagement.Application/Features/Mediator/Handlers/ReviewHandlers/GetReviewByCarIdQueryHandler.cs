@@ -19,10 +19,11 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.ReviewHandl
             _repository = repository;
         }
 
-        public async Task<List<GetReviewByCarIdQueryResult>> Handle(GetReviewByCarIdQuery request, CancellationToken cancellationToken)
+
+        async Task<List<GetReviewByCarIdQueryResult>> IRequestHandler<GetReviewByCarIdQuery, List<GetReviewByCarIdQueryResult>>.Handle(GetReviewByCarIdQuery request, CancellationToken cancellationToken)
         {
-            var value =  _repository.GetReviewsByCarId(request.Id);
-            return value.Select(x=>new GetReviewByCarIdQueryResult
+            var value = _repository.GetReviewsByCarId(request.Id);
+            return value.Select(x => new GetReviewByCarIdQueryResult
             {
                 CarID = x.CarID,
                 Comment = x.Comment,
@@ -30,9 +31,8 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.ReviewHandl
                 CustomerName = x.CustomerName,
                 RatingValue = x.RatingValue,
                 ReviewDate = x.ReviewDate,
-                ReviewId=request.Id
+                ReviewId = x.ReviewId
             }).ToList();
-
         }
     }
 }

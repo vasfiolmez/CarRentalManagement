@@ -1,6 +1,8 @@
 ﻿using CarRentalManagement.Application.Features.CQRS.Commands.CarCommands;
 using CarRentalManagement.Application.Features.CQRS.Handlers.CarHandlers;
 using CarRentalManagement.Application.Features.CQRS.Queries.CarQueries;
+using CarRentalManagement.Application.Features.Mediator.Queries.StatisticsQueries;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +12,7 @@ namespace CarRentalManagement.WebApi.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
+       
         private readonly CreateCarCommandHandler _createCarCommandHandler;
         private readonly GetCarByIdQueryHandler _getCarByIdQueryHandler;
         private readonly GetCarQueryHandler _getCarQueryHandler;
@@ -27,6 +30,7 @@ namespace CarRentalManagement.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLast5CarsWithBrandsQueryHandler = getLast5CarsWithBrandsQueryHandler;
+            
         }
         [HttpGet]
         public async Task<IActionResult> CarList()
@@ -70,5 +74,6 @@ namespace CarRentalManagement.WebApi.Controllers
             var values=_getLast5CarsWithBrandsQueryHandler.Handle();
             return Ok(values);
         }
+     
     }
 }

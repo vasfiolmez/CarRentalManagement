@@ -1,5 +1,6 @@
 ﻿using CarRentalManagement.Dto.BlogDtos;
 using CarRentalManagement.Dto.CommentDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ using System.Text;
 
 namespace CarRentaManagement.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class BlogController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

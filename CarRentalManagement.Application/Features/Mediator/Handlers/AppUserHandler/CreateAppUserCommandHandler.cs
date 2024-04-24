@@ -24,12 +24,7 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.AppUserHand
 		{
 			await _appUserRepository.CreateAsync(new AppUser
 			{
-				Username = request.Username,
-				Password = request.Password,
-				Name = request.Name,
-				Surname = request.Surname,
-				Email = request.Email,
-				AppRoleId = (int)RoleTypes.Member
+				
 			});
 		}
 	}

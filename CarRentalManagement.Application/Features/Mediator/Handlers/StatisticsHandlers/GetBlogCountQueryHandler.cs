@@ -1,5 +1,6 @@
 ﻿using CarRentalManagement.Application.Features.Mediator.Queries.StatisticsQueries;
 using CarRentalManagement.Application.Features.Mediator.Results.StatisticsResults;
+using CarRentalManagement.Application.Interfaces.StatisticsInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,20 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.StatisticsH
 {
     public class GetBlogCountQueryHandler : IRequestHandler<GetBlogCountQuery, GetBlogCountQueryResult>
     {
-        public Task<GetBlogCountQueryResult> Handle(GetBlogCountQuery request, CancellationToken cancellationToken)
+        private readonly IStatisticsRepository _repository;
+
+        public GetBlogCountQueryHandler(IStatisticsRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+
+        public async Task<GetBlogCountQueryResult> Handle(GetBlogCountQuery request, CancellationToken cancellationToken)
+        {
+            var value = _repository.GetBlogCount();
+            return new GetBlogCountQueryResult
+            {
+                BlogCount = value
+            };
         }
     }
 }

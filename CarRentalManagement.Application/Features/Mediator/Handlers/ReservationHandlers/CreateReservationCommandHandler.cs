@@ -33,8 +33,8 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.Reservation
                 DriverLicenseYear = request.DriverLicenseYear,
                 DropOffLocationID = request.DropOffLocationID,
                 PickUpLocationID = request.PickUpLocationID,
-                Status="Rezervasyon Alındı."
-            });
+                Status = "Onay Bekliyor."
+            }); 
         }
     }
 }

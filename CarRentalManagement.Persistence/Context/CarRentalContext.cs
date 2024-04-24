@@ -1,4 +1,5 @@
 ﻿using CarRentalManagement.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CarRentalManagement.Persistence.Context
 {
-    public class CarRentalContext : DbContext
+    public class CarRentalContext : IdentityDbContext<AppUser,AppRole,int>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -27,10 +28,11 @@ namespace CarRentalManagement.Persistence.Context
                 .WithMany(y => y.DropOffReservation)
                 .HasForeignKey(z => z.DropOffLocationID)
                 .OnDelete(DeleteBehavior.ClientSetNull);
+            base.OnModelCreating(modelBuilder);
         }
 
-		public DbSet<AppUser> AppUsers { get; set; }
-		public DbSet<AppRole> AppRoles { get; set; }
+		//public DbSet<AppUser> AppUsers { get; set; }
+		//public DbSet<AppRole> AppRoles { get; set; }
 		public DbSet<About> Abouts { get; set; }
         public DbSet<Banner> Banners { get; set; }
         public DbSet<BlogCategory> BlogCategories { get; set; }

@@ -22,7 +22,7 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.StatisticsH
 
         public async Task<GetAuthorCountQueryResult> Handle(GetAuthorCountQuery request, CancellationToken cancellationToken)
         {
-            var value =_statisticsRepository.GetAuthorCount();
+            var value = _statisticsRepository.GetAuthorCount();
             return new GetAuthorCountQueryResult
             {
                 AuthorCount = value

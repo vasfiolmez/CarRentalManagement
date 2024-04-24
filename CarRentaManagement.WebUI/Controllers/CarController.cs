@@ -1,10 +1,13 @@
 ﻿using CarRentalManagement.Dto.CarDtos;
 using CarRentalManagement.Dto.CarPricingDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace CarRentaManagement.WebUI.Controllers
 {
+    [AllowAnonymous]
+
     public class CarController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

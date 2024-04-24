@@ -1,5 +1,6 @@
 ﻿using CarRentalManagement.Application.Features.Mediator.Queries.StatisticsQueries;
 using CarRentalManagement.Application.Features.Mediator.Results.StatisticsResults;
+using CarRentalManagement.Application.Interfaces.StatisticsInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,20 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.StatisticsH
 {
     public class GetBlogTitleByMaxBlogCommentQueryHandler : IRequestHandler<GetBlogTitleByMaxBlogCommentQuery, GetBlogTitleByMaxBlogCommentQueryResult>
     {
-        public Task<GetBlogTitleByMaxBlogCommentQueryResult> Handle(GetBlogTitleByMaxBlogCommentQuery request, CancellationToken cancellationToken)
+        private readonly IStatisticsRepository _repository;
+
+        public GetBlogTitleByMaxBlogCommentQueryHandler(IStatisticsRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+
+        public async Task<GetBlogTitleByMaxBlogCommentQueryResult> Handle(GetBlogTitleByMaxBlogCommentQuery request, CancellationToken cancellationToken)
+        {
+            var value = _repository.GetBlogTitleByMaxBlogComment();
+            return new GetBlogTitleByMaxBlogCommentQueryResult
+            {
+                BlogTitleByMaxBlogComment = value
+            };
         }
     }
 }

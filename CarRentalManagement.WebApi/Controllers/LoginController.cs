@@ -16,18 +16,6 @@ namespace CarRentalManagement.WebApi.Controllers
 		{
 			_mediator = mediator;
 		}
-		[HttpPost]
-		public async Task<IActionResult> Index(GetCheckAppUserQuery query)
-		{
-			var values = await _mediator.Send(query);
-			if (values.IsExist)
-			{
-				return Created("", JwtTokenGenerator.GenerateToken(values));
-			}
-			else
-			{
-				return BadRequest("Kullanıcı adı veya şifre hatalıdır");
-			}
-		}
+		
 	}
 }

@@ -2,9 +2,12 @@
 using Newtonsoft.Json;
 using CarRentalManagement.Dto.ContactDtos;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarRentaManagement.WebUI.Controllers
 {
+    [AllowAnonymous]
+
     public class ContactController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

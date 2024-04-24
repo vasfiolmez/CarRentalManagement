@@ -12,7 +12,9 @@ using CarRentalManagement.Application.Interfaces.CarFeatureInterfaces;
 using CarRentalManagement.Application.Interfaces.CarInterfaces;
 using CarRentalManagement.Application.Interfaces.CarPricingInterfaces;
 using CarRentalManagement.Application.Interfaces.RentACarInterfaces;
+using CarRentalManagement.Application.Interfaces.ReservationInterfaces;
 using CarRentalManagement.Application.Interfaces.ReviewInterfaces;
+using CarRentalManagement.Application.Interfaces.StatisticsInterfaces;
 using CarRentalManagement.Application.Interfaces.TagCloudInterfaces;
 using CarRentalManagement.Application.Services;
 using CarRentalManagement.Application.Tools;
@@ -25,13 +27,30 @@ using CarRentalManagement.Persistence.Repositories.CarPricingRepositories;
 using CarRentalManagement.Persistence.Repositories.CarRepositories;
 using CarRentalManagement.Persistence.Repositories.CommentRepositories;
 using CarRentalManagement.Persistence.Repositories.RentACarRepository;
+using CarRentalManagement.Persistence.Repositories.ReservationRepositories;
 using CarRentalManagement.Persistence.Repositories.ReviewRepositories;
+using CarRentalManagement.Persistence.Repositories.StatisticsRepositories;
 using CarRentalManagement.Persistence.Repositories.TagCloudRepositories;
+using CarRentalManagement.WebApi.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpClient();
+
+
+builder.Services.AddCors(opt =>
+{
+	opt.AddPolicy("CorsPolicy", builder =>
+	{
+		builder.AllowAnyHeader()
+		.AllowAnyMethod()
+		.SetIsOriginAllowed((host) => true)
+		.AllowCredentials();
+	});
+});
+builder.Services.AddSignalR();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
 {
@@ -59,6 +78,8 @@ builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(CommentRepository
 builder.Services.AddScoped(typeof(IRentACarRepository),typeof(RentACarRepository));
 builder.Services.AddScoped(typeof(ICarDescriptionRepository),typeof(CarDescriptionRepository));
 builder.Services.AddScoped(typeof(IReviewRepository),typeof(ReviewRepository));
+builder.Services.AddScoped(typeof(IStatisticsRepository),typeof(StatisticsRepository));
+builder.Services.AddScoped(typeof(IReservationRepository),typeof(ReservationRepositories));
 
 
 builder.Services.AddScoped<GetAboutQueryHandler>();
@@ -115,11 +136,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("CorsPolicy");
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<CarHub>("/carhub");
 
 app.Run();

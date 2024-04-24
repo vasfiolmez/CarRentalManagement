@@ -21,7 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentaManagement.WebUI", "CarRentaManagement.WebUI\CarRentaManagement.WebUI.csproj", "{1AC93D88-4566-4C97-8CFE-3E13B58FB335}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalManagement.Dto", "CarRentalManagement.Dto\CarRentalManagement.Dto.csproj", "{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalManagement.Dto", "CarRentalManagement.Dto\CarRentalManagement.Dto.csproj", "{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

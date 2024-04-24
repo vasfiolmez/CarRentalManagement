@@ -27,5 +27,11 @@ namespace CarRentaManagement.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+        [Route("Inbox")]
+        public async Task<IActionResult> Inbox()
+        {
+            return View();
+        }
+
     }
 }

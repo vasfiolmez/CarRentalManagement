@@ -17,16 +17,12 @@ namespace CarRentalManagement.Persistence.Repositories.CarRepositories
         public CarRepository(CarRentalContext context)
         {
             _context = context;
-        }
-
-       
-
+        }    
         public List<Car> GetCarsListWithBrands()
         {
             var values=_context.Cars.Include(c => c.Brand).ToList();
             return values;
         }
-
 
         public List<Car> GetLast5CarsWithBrands()
         {

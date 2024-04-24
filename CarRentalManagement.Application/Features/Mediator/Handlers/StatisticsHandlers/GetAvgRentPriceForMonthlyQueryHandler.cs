@@ -1,5 +1,6 @@
 ﻿using CarRentalManagement.Application.Features.Mediator.Queries.StatisticsQueries;
 using CarRentalManagement.Application.Features.Mediator.Results.StatisticsResults;
+using CarRentalManagement.Application.Interfaces.StatisticsInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,20 @@ namespace CarRentalManagement.Application.Features.Mediator.Handlers.StatisticsH
 {
     public class GetAvgRentPriceForMonthlyQueryHandler : IRequestHandler<GetAvgRentPriceForMonthlyQuery, GetAvgRentPriceForMonthlyQueryResult>
     {
-        public Task<GetAvgRentPriceForMonthlyQueryResult> Handle(GetAvgRentPriceForMonthlyQuery request, CancellationToken cancellationToken)
+        private readonly IStatisticsRepository _repository;
+
+        public GetAvgRentPriceForMonthlyQueryHandler(IStatisticsRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+
+        public async Task<GetAvgRentPriceForMonthlyQueryResult> Handle(GetAvgRentPriceForMonthlyQuery request, CancellationToken cancellationToken)
+        {
+            var value = _repository.GetAvgRentPriceForMonthly();
+            return new GetAvgRentPriceForMonthlyQueryResult
+            {
+                AvgRentPriceForMonthly = value
+            };
         }
     }
 }

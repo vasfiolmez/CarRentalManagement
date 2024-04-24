@@ -1,5 +1,6 @@
 ﻿using CarRentalManagement.Application.Features.Mediator.Queries.StatisticsQueries;
 using CarRentalManagement.Application.Features.Mediator.Results.StatisticsResults;
+using CarRentalManagement.Application.Interfaces.StatisticsInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

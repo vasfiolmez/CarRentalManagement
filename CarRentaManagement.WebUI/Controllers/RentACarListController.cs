@@ -1,10 +1,13 @@
 ﻿using CarRentalManagement.Dto.RentACarDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace CarRentaManagement.WebUI.Controllers
-{
-	public class RentACarListController : Controller
+namespace CarRentaManagement.WebUI.Controllers;
+
+
+[AllowAnonymous]
+public class RentACarListController : Controller
 	{
         private readonly IHttpClientFactory _httpClientFactory;
         public RentACarListController(IHttpClientFactory httpClientFactory)
@@ -33,4 +36,4 @@ namespace CarRentaManagement.WebUI.Controllers
             return View();
         }
     }
-}
+

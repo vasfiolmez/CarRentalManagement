@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CarRentalManagement.Application.Features.Mediator.Queries.StatisticsQueries;
+using CarRentalManagement.Application.Features.Mediator.Results.StatisticsResults;
+using CarRentalManagement.Application.Interfaces.StatisticsInterfaces;
+using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +10,23 @@ using System.Threading.Tasks;
 
 namespace CarRentalManagement.Application.Features.Mediator.Handlers.StatisticsHandlers
 {
-    internal class GetCarBrandAndModelByRentPriceDailyMinQueryHandler
+    public class GetCarBrandAndModelByRentPriceDailyMinQueryHandler : IRequestHandler<GetCarBrandAndModelByRentPriceDailyMinQuery, GetCarBrandAndModelByRentPriceDailyMinQueryResult>
     {
+        private readonly IStatisticsRepository _repository;
+
+        public GetCarBrandAndModelByRentPriceDailyMinQueryHandler(IStatisticsRepository repository)
+        {
+            _repository = repository;
+        }
+
+        public async Task<GetCarBrandAndModelByRentPriceDailyMinQueryResult> Handle(GetCarBrandAndModelByRentPriceDailyMinQuery request, CancellationToken cancellationToken)
+        {
+            var value = _repository.GetCarBrandAndModelByRentPriceDailyMin();
+            return new GetCarBrandAndModelByRentPriceDailyMinQueryResult
+            {
+                CarBrandAndModelByRentPriceDailyMin = value
+            };
+        }
+
     }
 }

@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentaManagement.WebUI", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalManagement.Dto", "CarRentalManagement.Dto\CarRentalManagement.Dto.csproj", "{BCDEBAA0-09B2-487F-A4E9-78F63D51A13B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ss", "ss", "{0617A871-3C75-4D1E-8B20-431D68BBD7B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
